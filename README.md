@@ -152,6 +152,7 @@ REST API's Doc
    Endpoint: http://localhost:8080/users/find/?first_name=Ujjwal&result=1
 
   Response:
+  
     {
     "success": true,
     "data": [
