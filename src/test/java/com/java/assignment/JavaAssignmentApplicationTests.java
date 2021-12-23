@@ -92,8 +92,8 @@ class JavaAssignmentApplicationTests {
 		pinCodeErrors.put(18000, new UserRequestPayload("Ujjwal","Sharma", "ujjwal@gmail.com", "9191496", null, null, null, 18000));
 		userResponseWithErrors.setPinCodeErrors(1, pinCodeErrors);
 
-		userRequestPayloads.add(UserConversion.convertObject(user1));
-		userRequestPayloads.add(UserConversion.convertObject(user2));
+		userRequestPayloads.add(UserObjectConversion.convertObject(user1));
+		userRequestPayloads.add(UserObjectConversion.convertObject(user2));
 		CreateUserDTO createUserDTO = new CreateUserDTO();
 		createUserDTO.setUserRequestPayloads(userRequestPayloads);
 
@@ -105,6 +105,7 @@ class JavaAssignmentApplicationTests {
 				.contentType(MediaType.APPLICATION_JSON)
 				.content(objectMapper.writeValueAsString(createUserDTO));
 
+		@SuppressWarnings("unused")
 		MvcResult mvcResult = mockMvc.perform(requestBuilder).andExpect(status().is(200))
 				.andExpect(content().string(objectMapper.writeValueAsString(userResponseWithErrors))).andReturn();
 
@@ -121,6 +122,7 @@ class JavaAssignmentApplicationTests {
 				.accept(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON);
 
 		try {
+			@SuppressWarnings("unused")
 			MvcResult mvcResult = mockMvc.perform(requestBuilder).andExpect(status().is(200))
 				.andExpect(content().string("{\n"
 							+ "    \"success\": true,\n"
@@ -135,7 +137,7 @@ class JavaAssignmentApplicationTests {
 	}
 }
 
-class UserConversion {
+class UserObjectConversion {
 
 	public static UserRequestPayload convertObject(Users user) {
 

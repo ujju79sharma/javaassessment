@@ -40,10 +40,10 @@ public class UsersServiceImpl implements UserService {
 		this.usersDAO = usersDAO;
 	}
 
-	public Map<String, UserRequestPayload> emailErrors = new HashMap<>();
-	public Map<String, UserRequestPayload> firstNameErrors = new HashMap<>();
-	public Map<String, UserRequestPayload> mobileErrors = new HashMap<>();
-	public Map<Integer, UserRequestPayload> pinCodeErrors = new HashMap<>();
+	public Map<String, UserRequestPayload> emailErrors = new HashMap<>(); // stores how many email errors in the list of records where there
+	public Map<String, UserRequestPayload> firstNameErrors = new HashMap<>(); // stores how many first name errors in the list of records where there
+	public Map<String, UserRequestPayload> mobileErrors = new HashMap<>(); // stores how many mobile errors in the list of records where there
+	public Map<Integer, UserRequestPayload> pinCodeErrors = new HashMap<>(); // stores how many pin code errors in the list of records where there
 
 	@Override
 	public ResponseEntity<UserResponse> createAUser(CreateUserDTO payloadObject) {
@@ -78,14 +78,14 @@ public class UsersServiceImpl implements UserService {
 								users.add(user);
 
 							}else
-								emailErrors.put(createUserObj.getEmail(), createUserObj);
+								emailErrors.put(createUserObj.getEmail(), createUserObj); // if email error occured, update the map object
 						}else
-							mobileErrors.put(createUserObj.getMobile(), createUserObj);
+							mobileErrors.put(createUserObj.getMobile(), createUserObj); // if mobile error occured, update the map object
 					}else
 						
-						pinCodeErrors.put(createUserObj.getPinCode(), createUserObj);
+						pinCodeErrors.put(createUserObj.getPinCode(), createUserObj);// if pin code error occured, update the map object
 				}else
-					firstNameErrors.put(createUserObj.getFirstName(), createUserObj);
+					firstNameErrors.put(createUserObj.getFirstName(), createUserObj); // if firstname error occured, update the map object
 			}
 
 			if (emailErrors.size() == 0 && mobileErrors.size() == 0 && pinCodeErrors.size() == 0 && firstNameErrors.size() == 0)
