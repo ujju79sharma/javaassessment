@@ -48,7 +48,7 @@ REST API's Doc
         "firstName":"Ujjwal",
         "lastName":"Sharma" 
     }]
-  }
+    }
 
   Response:
   
@@ -143,7 +143,7 @@ REST API's Doc
     },
     "message": "2 user(s) created with 2 email error(s) occured, 1 mobile error(s) occured, 0 first name error(s) occured, 1 pin code error(s) occured.",
     "statusCode": 200
-  }
+    }
 
 
 2.) Search A User
@@ -173,4 +173,4 @@ REST API's Doc
     ],
     "message": "1 user(s) found.",
     "statusCode": 200
-  }
+    }
